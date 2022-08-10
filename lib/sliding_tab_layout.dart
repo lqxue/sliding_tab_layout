@@ -47,7 +47,9 @@ class SlidingTabLayoutState extends State<SlidingTabLayout>
   Widget build(BuildContext context) {
     return TabBar(
       padding: widget.padding,
-      onTap: (tab) {},
+      onTap: (tab) {
+        widget.valueChanged?.call(tab);
+      },
       //选中字样式
       labelStyle: TextStyle(
           fontSize: widget.textSize, fontWeight: getSelectFontWeight()),
