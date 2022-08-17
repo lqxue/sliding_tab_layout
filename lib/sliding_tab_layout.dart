@@ -7,7 +7,13 @@ enum TextBold {
   SELECT,
   BOTH,
 }
-
+///
+/// 创建tabs 每个tab可以指定高度 默认是46
+/// final List<Tab> tabs = [
+//     Tab(height:10,text: "标题1"),
+//     Tab(height:10,text: "标题1"),
+//     Tab(height:10,text: "标题1"),
+//   ];
 class SlidingTabLayout extends StatefulWidget {
   final Color textSelectColor;
   final Color textUnselectColor;
@@ -20,6 +26,8 @@ class SlidingTabLayout extends StatefulWidget {
   final List<Widget> tabs;
   final ValueChanged<int>? valueChanged;
   final EdgeInsets padding;
+  final EdgeInsets labelPadding;
+  final EdgeInsets indicatorPadding;
   final TabController tabController;
 
   const SlidingTabLayout(this.tabs,
@@ -34,6 +42,8 @@ class SlidingTabLayout extends StatefulWidget {
       this.textBold = TextBold.SELECT,
       this.tabSpaceEqual = true,
       this.padding = EdgeInsets.zero,
+      this.labelPadding = EdgeInsets.zero,
+      this.indicatorPadding = EdgeInsets.zero,
       this.valueChanged})
       : super(key: key);
 
@@ -60,7 +70,7 @@ class SlidingTabLayoutState extends State<SlidingTabLayout>
       isScrollable: !widget.tabSpaceEqual,
       controller: widget.tabController,
       //字对应的padding
-      labelPadding: EdgeInsets.zero,
+      labelPadding: widget.labelPadding,
       //选中字体颜色
       labelColor: widget.textSelectColor,
       //未选中字的颜色
@@ -70,7 +80,7 @@ class SlidingTabLayoutState extends State<SlidingTabLayout>
       //指示器的高度
       indicatorWeight: widget.indicatorHeight,
       //设置指示器的padding 水平padding 最后控制指示器的宽度 要R重启才生效
-      indicatorPadding: EdgeInsets.symmetric(horizontal: 0),
+      indicatorPadding: widget.indicatorPadding,
       //指示器大小计算方式，TabBarIndicatorSize.label跟文字等宽,TabBarIndicatorSize.tab跟每个tab等宽
       indicatorSize: TabBarIndicatorSize.label,
       //下面设置完了会使整个tab背景变色并设置圆角
