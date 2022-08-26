@@ -76,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       indicatorHeight: 3,
       tabSpaceEqual: true,
       textSelectColor: Colors.red,
+      indicatorSize:TabBarIndicatorSize.tab,
       textUnselectColor: Colors.grey,
     );
   }

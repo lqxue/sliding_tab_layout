@@ -21,9 +21,10 @@ class SlidingTabLayout extends StatefulWidget {
   final TextBold textBold;
   final Color indicatorColor;
   final double indicatorHeight;
+  final TabBarIndicatorSize? indicatorSize;
   final bool tabSpaceEqual;
   final bool isRoundedCorners;
-  final List<Widget> tabs;
+  final List<Tab> tabs;
   final ValueChanged<int>? valueChanged;
   final EdgeInsets padding;
   final EdgeInsets labelPadding;
@@ -37,6 +38,7 @@ class SlidingTabLayout extends StatefulWidget {
       this.textUnselectColor = Colors.white,
       this.indicatorColor = Colors.black,
       this.textSize = 15,
+      this.indicatorSize = TabBarIndicatorSize.label,
       this.isRoundedCorners = false,
       this.indicatorHeight = 3,
       this.textBold = TextBold.SELECT,
@@ -82,7 +84,7 @@ class SlidingTabLayoutState extends State<SlidingTabLayout>
       //设置指示器的padding 水平padding 最后控制指示器的宽度 要R重启才生效
       indicatorPadding: widget.indicatorPadding,
       //指示器大小计算方式，TabBarIndicatorSize.label跟文字等宽,TabBarIndicatorSize.tab跟每个tab等宽
-      indicatorSize: TabBarIndicatorSize.label,
+      indicatorSize: widget.indicatorSize,
       //下面设置完了会使整个tab背景变色并设置圆角
       indicator: widget.isRoundedCorners
           ? buildCustomUnderlineTabIndicator()
